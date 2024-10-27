@@ -1,16 +1,18 @@
-import { createPortal } from 'react-dom';
 export default function AddProject() {
-	const labelClassName = '';
-	const inputClassName = '';
+	const labelClassName = 'uppercase font-bold text-lg  text-stone-500 mt-6';
+	const inputClassName =
+		'p-2 bg-stone-200 text-lg text-stone-600 rounded-sm focus:outline-none focus:border-b-4 focus:border-stone-500';
 
-	return createPortal(
+	return (
 		<div className="">
-			<div>
-				<button>Cancel</button>
-				<button>Save</button>
+			<div className="flex flex-row justify-end gap-x-4 gap-y-2">
+				<button className="">Cancel</button>
+				<button className="bg-black rounded-md text-stone-200 py-3 px-6">
+					Save
+				</button>
 			</div>
 
-			<form>
+			<form className="flex flex-col pt-6">
 				<label htmlFor="title" className={labelClassName}>
 					Title
 				</label>
@@ -18,14 +20,13 @@ export default function AddProject() {
 				<label htmlFor="description" className={labelClassName}>
 					Description
 				</label>
-				<textarea id="description"></textarea>
+				<textarea id="description" className={inputClassName}></textarea>
 
 				<label htmlFor="date" className={labelClassName}>
 					Due date
 				</label>
-				<input type="date" name="" id="date" />
+				<input type="date" id="date" className={inputClassName} />
 			</form>
-		</div>,
-		document.getElementById('workspace')
+		</div>
 	);
 }
