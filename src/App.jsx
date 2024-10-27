@@ -3,7 +3,7 @@ import Sidebar from './Sidebar';
 import AddProject from './AddProject';
 function App() {
 	const [yourProjects, setYourProjects] = useState([]);
-	const [showAddProject, setShowAddProject] = useState(false);
+	const [whatInWorkspace, setWhatInWorkspace] = useState(false);
 
 	function handleSaveProject(title, description, date) {
 		setYourProjects((prevProjects) => {
@@ -18,31 +18,36 @@ function App() {
 
 			return updatedYourProjects;
 		});
-    
-		console.log(yourProjects);
 	}
 
-	function handleShowAddProject() {
-		setShowAddProject(true);
+	function handleShowInWorkspace(view) {
+		setWhatInWorkspace(view);
 	}
 
-	function handleCloseAddProject() {
-		setShowAddProject(false);
+	function handleCloseWorkspace() {
+		setWhatInWorkspace(false);
+	}
+
+	function handleEditProject(index) {
+		console.log(index);
 	}
 
 	return (
 		<main className="flex flex-row justify-stretch h-dvh pt-10">
 			<Sidebar
-				onClickAddButton={handleShowAddProject}
+				onClickAddButton={()=>handleShowInWorkspace('add')}
+				onClickEditProject={handleEditProject}
 				projects={yourProjects}
 			/>
 			<section id="workspace" className="py-16 px-8 grow">
-				{showAddProject && (
+				{whatInWorkspace === 'add' && (
 					<AddProject
 						onSave={handleSaveProject}
-						onClose={handleCloseAddProject}
+						onClose={handleCloseWorkspace}
 					/>
 				)}
+
+				{}
 			</section>
 		</main>
 	);
