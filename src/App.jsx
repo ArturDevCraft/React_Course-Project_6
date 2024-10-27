@@ -1,10 +1,10 @@
-
+import Sidebar from './Sidebar';
 function App() {
-  return (
-    <>
-      <h1 className="my-8 text-center text-5xl font-bold">Hello World</h1>
-    </>
-  );
+	return (
+		<main className="flex flex-column h-dvh pt-10">
+			<Sidebar />
+		</main>
+	);
 }
 
 export default App;
