@@ -1,8 +1,15 @@
 import { useState } from 'react';
-import Sidebar from './Sidebar';
-import AddProject from './AddProject';
+import Sidebar from './components/Sidebar';
+import AddProject from './components/AddProject';
 function App() {
-	const [yourProjects, setYourProjects] = useState([]);
+	const [yourProjects, setYourProjects] = useState([
+		{
+			title: 'First project',
+			description:
+				'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque, earum.',
+			date: '10/28/2024',
+		},
+	]);
 	const [whatInWorkspace, setWhatInWorkspace] = useState(false);
 
 	function handleSaveProject(title, description, date) {
@@ -29,13 +36,13 @@ function App() {
 	}
 
 	function handleEditProject(index) {
-		console.log(index);
+		setWhatInWorkspace('edit');
 	}
 
 	return (
 		<main className="flex flex-row justify-stretch h-dvh pt-10">
 			<Sidebar
-				onClickAddButton={()=>handleShowInWorkspace('add')}
+				onClickAddButton={() => handleShowInWorkspace('add')}
 				onClickEditProject={handleEditProject}
 				projects={yourProjects}
 			/>
@@ -47,7 +54,10 @@ function App() {
 					/>
 				)}
 
-				{}
+				{whatInWorkspace === 'edit' &&
+					{
+						//edit component
+					}}
 			</section>
 		</main>
 	);
