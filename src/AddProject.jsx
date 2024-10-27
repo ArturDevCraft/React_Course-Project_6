@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-export default function AddProject({ onSave }) {
+export default function AddProject({ onSave, onClose }) {
 	const labelClassName = 'uppercase font-bold text-lg  text-stone-500 mt-6';
 	const inputClassName =
 		'p-2 bg-stone-200 text-lg text-stone-600 rounded-sm focus:outline-none focus:border-b-4 focus:border-stone-500';
@@ -14,10 +14,19 @@ export default function AddProject({ onSave }) {
 		date.current.value = '';
 	}
 
+	function handleClose() {
+		title.current.value = '';
+		description.current.value = '';
+		date.current.value = '';
+		onClose();
+	}
+
 	return (
 		<div className="">
 			<div className="flex flex-row justify-end gap-x-4 gap-y-2">
-				<button className="">Cancel</button>
+				<button onClick={handleClose} className="">
+					Cancel
+				</button>
 				<button
 					onClick={handleSave}
 					className="bg-black rounded-md text-stone-200 py-3 px-6"
