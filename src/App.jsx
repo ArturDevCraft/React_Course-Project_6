@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import AddProject from './components/AddProject';
+import EditProject from './components/EditProject';
+
 function App() {
 	const [yourProjects, setYourProjects] = useState([
 		{
@@ -10,6 +12,7 @@ function App() {
 			date: '10/28/2024',
 		},
 	]);
+	const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 	const [whatInWorkspace, setWhatInWorkspace] = useState(false);
 
 	function handleSaveProject(title, description, date) {
@@ -37,6 +40,8 @@ function App() {
 
 	function handleEditProject(index) {
 		setWhatInWorkspace('edit');
+		setCurrentProjectIndex(index);
+		console.log(index);
 	}
 
 	return (
@@ -54,10 +59,9 @@ function App() {
 					/>
 				)}
 
-				{whatInWorkspace === 'edit' &&
-					{
-						//edit component
-					}}
+				{whatInWorkspace === 'edit' && (
+					<EditProject {...yourProjects[currentProjectIndex]} />
+				)}
 			</section>
 		</main>
 	);
