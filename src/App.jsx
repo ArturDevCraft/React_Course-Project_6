@@ -10,7 +10,7 @@ function App() {
 			description:
 				'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque, earum.',
 			date: '10/28/2024',
-			tasks: ['Do something', 'Do something else'],
+			taskList: ['Do something', 'Do something else'],
 		},
 	]);
 	const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
@@ -23,7 +23,7 @@ function App() {
 					title: title,
 					description: description,
 					date: date,
-					tasks: [],
+					taskList: [],
 				},
 				...prevProjects,
 			];
@@ -45,6 +45,18 @@ function App() {
 		setCurrentProjectIndex(index);
 	}
 
+	function handleAddNewTask(task, projectIndex) {
+		setYourProjects((prevProjects) => {
+			const updatedProjects = [...prevProjects];
+
+			updatedProjects[projectIndex] = {
+				...updatedProjects[projectIndex],
+				taskList: [...updatedProjects[projectIndex].taskList, task],
+			};
+
+			return updatedProjects;
+		});
+	}
 	return (
 		<main className="flex flex-row justify-stretch h-dvh pt-10">
 			<Sidebar
@@ -61,7 +73,11 @@ function App() {
 				)}
 
 				{whatInWorkspace === 'edit' && (
-					<EditProject {...yourProjects[currentProjectIndex]} />
+					<EditProject
+						{...yourProjects[currentProjectIndex]}
+						index={currentProjectIndex}
+						onAddTask={handleAddNewTask}
+					/>
 				)}
 			</section>
 		</main>

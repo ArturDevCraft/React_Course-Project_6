@@ -4,9 +4,11 @@ export default function AddProject({ onSave, onClose }) {
 	const labelClassName = 'uppercase font-bold text-lg  text-stone-500 mt-6';
 	const inputClassName =
 		'p-2 bg-stone-200 text-lg text-stone-600 rounded-sm focus:outline-none focus:border-b-4 focus:border-stone-500';
+
 	const title = useRef();
 	const description = useRef();
 	const date = useRef();
+
 	function handleSave() {
 		onSave(title.current.value, description.current.value, date.current.value);
 		title.current.value = '';

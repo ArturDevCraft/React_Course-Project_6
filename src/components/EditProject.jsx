@@ -1,5 +1,12 @@
 import Tasks from './Tasks';
-export default function EditProject({ title, description, date, tasks }) {
+export default function EditProject({
+	title,
+	description,
+	date,
+	taskList,
+	onAddTask,
+	index,
+}) {
 	return (
 		<div className="max-w-screen-md">
 			<div className="flex justify-between">
@@ -10,7 +17,7 @@ export default function EditProject({ title, description, date, tasks }) {
 			</div>
 			<p className="text-stone-400 text-lg mt-4">{date}</p>
 			<p className="text-lg text-stone-700 mt-4">{description}</p>
-			<Tasks taskList={tasks} />
+			<Tasks taskList={taskList} projectIndex={index} onAddTask={onAddTask} />
 		</div>
 	);
 }
