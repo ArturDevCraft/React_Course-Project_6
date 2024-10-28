@@ -10,6 +10,7 @@ function App() {
 			description:
 				'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque, earum.',
 			date: '10/28/2024',
+			tasks: ['Do something', 'Do something else'],
 		},
 	]);
 	const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
@@ -22,6 +23,7 @@ function App() {
 					title: title,
 					description: description,
 					date: date,
+					tasks: [],
 				},
 				...prevProjects,
 			];
@@ -41,7 +43,6 @@ function App() {
 	function handleEditProject(index) {
 		setWhatInWorkspace('edit');
 		setCurrentProjectIndex(index);
-		console.log(index);
 	}
 
 	return (
