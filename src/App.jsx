@@ -45,7 +45,7 @@ function App() {
 		setCurrentProjectIndex(index);
 	}
 
-	function handleAddNewTask(task, projectIndex) {
+	function addNewTask(task, projectIndex) {
 		setYourProjects((prevProjects) => {
 			const updatedProjects = [...prevProjects];
 
@@ -57,6 +57,22 @@ function App() {
 			return updatedProjects;
 		});
 	}
+
+	function clearTask(projectIndex, taskIndex) {
+		setYourProjects((prevProjects) => {
+			const updatedProjects = [...prevProjects];
+			updatedProjects[projectIndex] = {
+				...prevProjects[projectIndex],
+				taskList: [
+					...prevProjects[projectIndex].taskList.filter(
+						(e, i) => i !== taskIndex
+					),
+				],
+			};
+			return updatedProjects;
+		});
+	}
+
 	return (
 		<main className="flex flex-row justify-stretch h-dvh pt-10">
 			<Sidebar
@@ -76,7 +92,8 @@ function App() {
 					<EditProject
 						{...yourProjects[currentProjectIndex]}
 						index={currentProjectIndex}
-						onAddTask={handleAddNewTask}
+						onAddTask={addNewTask}
+						onClearTask={clearTask}
 					/>
 				)}
 			</section>
