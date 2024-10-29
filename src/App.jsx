@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import AddProject from './components/AddProject';
 import EditProject from './components/EditProject';
+import NoProjectImage from './components/NoProjectImage';
 
 function App() {
 	const [yourProjects, setYourProjects] = useState([
@@ -88,8 +89,10 @@ function App() {
 				onClickAddButton={() => handleShowInWorkspace('add')}
 				onClickEditProject={handleEditProject}
 				projects={yourProjects}
+				activeProjectIndex={currentProjectIndex}
 			/>
 			<section id="workspace" className="py-16 px-8 grow">
+				{!whatInWorkspace && <NoProjectImage />}
 				{whatInWorkspace === 'add' && (
 					<AddProject onSave={saveProject} onClose={handleCloseWorkspace} />
 				)}
