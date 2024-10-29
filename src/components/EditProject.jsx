@@ -5,7 +5,7 @@ export default function EditProject({
 	date,
 	taskList,
 	onAddTask,
-    onClearTask,
+	onClearTask,
 	index,
 }) {
 	return (
@@ -17,8 +17,13 @@ export default function EditProject({
 				</button>
 			</div>
 			<p className="text-stone-400 text-lg mt-4">{date}</p>
-			<p className="text-lg text-stone-700 mt-4">{description}</p>
-			<Tasks taskList={taskList} projectIndex={index} onAddTask={onAddTask} onClearTask={onClearTask}/>
+			<p className="text-lg text-stone-700 mt-4 mb-6">{description}</p>
+			<Tasks
+				taskList={taskList}
+				projectIndex={index}
+				onAddTask={onAddTask}
+				onClearTask={onClearTask}
+			/>
 		</div>
 	);
 }
