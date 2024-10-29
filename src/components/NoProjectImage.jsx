@@ -2,7 +2,7 @@ import noProjectImg from '../assets/no-projects.png';
 
 export default function NoProjectImage() {
 	return (
-		<div className="flex flex-col w-full h-full justify-center items-center">
+		<div className="flex flex-col w-full h-full pt-10 justify-start items-center">
 			<img className="w-24" src={noProjectImg}></img>
 			<h1 className="text-3xl font-bold text-stone-600 mt-6">
 				No Project Selected
