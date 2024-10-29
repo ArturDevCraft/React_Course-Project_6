@@ -16,7 +16,7 @@ function App() {
 	const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 	const [whatInWorkspace, setWhatInWorkspace] = useState(false);
 
-	function handleSaveProject(title, description, date) {
+	function saveProject(title, description, date) {
 		setYourProjects((prevProjects) => {
 			const updatedYourProjects = [
 				{
@@ -29,6 +29,15 @@ function App() {
 			];
 
 			return updatedYourProjects;
+		});
+	}
+
+	function deleteProject(index) {
+		handleCloseWorkspace();
+		setYourProjects((prevProjects) => {
+			let updatedProjects = [...prevProjects];
+			updatedProjects = [...updatedProjects.filter((e, i) => i !== index)];
+			return updatedProjects;
 		});
 	}
 
@@ -82,10 +91,7 @@ function App() {
 			/>
 			<section id="workspace" className="py-16 px-8 grow">
 				{whatInWorkspace === 'add' && (
-					<AddProject
-						onSave={handleSaveProject}
-						onClose={handleCloseWorkspace}
-					/>
+					<AddProject onSave={saveProject} onClose={handleCloseWorkspace} />
 				)}
 
 				{whatInWorkspace === 'edit' && (
@@ -94,6 +100,7 @@ function App() {
 						index={currentProjectIndex}
 						onAddTask={addNewTask}
 						onClearTask={clearTask}
+						onDeleteProject={deleteProject}
 					/>
 				)}
 			</section>

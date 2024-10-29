@@ -6,13 +6,20 @@ export default function EditProject({
 	taskList,
 	onAddTask,
 	onClearTask,
+	onDeleteProject,
 	index,
 }) {
+	function handleDeleteProject() {
+		onDeleteProject(index);
+	}
 	return (
 		<div className="max-w-screen-md">
 			<div className="flex justify-between">
 				<h2 className="text-4xl font-bold text-stone-700">{title}</h2>
-				<button className="text-xl text-stone-700 hover:text-stone-500">
+				<button
+					className="text-xl text-stone-700 hover:text-stone-500"
+					onClick={handleDeleteProject}
+				>
 					Delete
 				</button>
 			</div>
