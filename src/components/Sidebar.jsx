@@ -6,7 +6,7 @@ export default function Sidebar({
 	activeProjectIndex,
 }) {
 	return (
-		<aside className="w-1/4 bg-black text-white py-10 px-8 rounded-tr-2xl">
+		<aside className="w-1/4 min-w-48 bg-black text-white py-10 px-8 rounded-tr-2xl">
 			<h2 className="my-10 text-2xl font-bold uppercase">Your projects</h2>
 			<Button onClick={onClickAddButton}>+ Add project</Button>
 			<ul className="mt-10">

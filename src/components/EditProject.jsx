@@ -13,7 +13,7 @@ export default function EditProject({
 		onDeleteProject(index);
 	}
 	return (
-		<div className="max-w-screen-md">
+		<div>
 			<div className="flex justify-between">
 				<h2 className="text-4xl font-bold text-stone-700">{title}</h2>
 				<button
