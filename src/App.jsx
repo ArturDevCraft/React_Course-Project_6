@@ -92,7 +92,8 @@ function App() {
 				activeProjectIndex={currentProjectIndex}
 			/>
 			<section id="workspace" className="py-16 px-8 grow">
-				{!whatInWorkspace && <NoProjectImage />}
+				{!whatInWorkspace && <NoProjectImage onClickAddButton={() => handleShowInWorkspace('add')}/>}
+
 				{whatInWorkspace === 'add' && (
 					<AddProject onSave={saveProject} onClose={handleCloseWorkspace} />
 				)}

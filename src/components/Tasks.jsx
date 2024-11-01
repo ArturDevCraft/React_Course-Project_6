@@ -16,6 +16,7 @@ export default function Tasks({
 	function handleClearTask(projectIndex, taskIndex) {
 		onClearTask(projectIndex, taskIndex);
 	}
+    
 	return (
 		<div className="border-t-2 border-stone-300 pt-6">
 			<h3 className="text-3xl font-bold text-stone-700 mb-6">Tasks</h3>
