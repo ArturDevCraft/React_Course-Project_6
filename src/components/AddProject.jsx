@@ -37,8 +37,10 @@ export default function AddProject({ onSave, onClose }) {
 	return (
 		<div className="">
 			<Modal ref={modal}>
-				<h2>Invalid input</h2>
-				<p>Please enter valid value for every field</p>
+				<h2 className="text-3xl font-bold text-stone-600">Invalid input</h2>
+				<p className="text-stone-500 text-xl mt-6">
+					Please enter valid value for every field
+				</p>
 			</Modal>
 			<div className="flex flex-row justify-end gap-x-4 gap-y-2">
 				<button onClick={handleClose} className="">
