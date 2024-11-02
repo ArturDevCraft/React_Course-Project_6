@@ -5,17 +5,24 @@ import EditProject from './components/EditProject';
 import NoProjectImage from './components/NoProjectImage';
 
 function App() {
-	const [yourProjects, setYourProjects] = useState([
-		{
-			title: 'First project',
-			description:
-				'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque, earum.',
-			date: '10/28/2024',
-			taskList: ['Do something', 'Do something else'],
-		},
-	]);
+	const [yourProjects, setYourProjects] = useState(getDataFromLocalStorage);
 	const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 	const [whatInWorkspace, setWhatInWorkspace] = useState(false);
+
+	function saveDataInLocalStorage(projects) {
+		localStorage.setItem('yourProjects', JSON.stringify(projects));
+	}
+
+	function getDataFromLocalStorage() {
+		const projectsString = localStorage.getItem('yourProjects');
+		const projectsArray = projectsString ? JSON.parse(projectsString) : null;
+
+		if (projectsArray === null) {
+			return [];
+		} else {
+			return projectsArray;
+		}
+	}
 
 	function saveProject(title, description, date) {
 		setYourProjects((prevProjects) => {
@@ -28,7 +35,7 @@ function App() {
 				},
 				...prevProjects,
 			];
-
+			saveDataInLocalStorage(updatedYourProjects);
 			return updatedYourProjects;
 		});
 	}
@@ -38,6 +45,7 @@ function App() {
 		setYourProjects((prevProjects) => {
 			let updatedProjects = [...prevProjects];
 			updatedProjects = [...updatedProjects.filter((e, i) => i !== index)];
+			saveDataInLocalStorage(updatedProjects);
 			return updatedProjects;
 		});
 	}
@@ -63,7 +71,7 @@ function App() {
 				...updatedProjects[projectIndex],
 				taskList: [...updatedProjects[projectIndex].taskList, task],
 			};
-
+			saveDataInLocalStorage(updatedProjects);
 			return updatedProjects;
 		});
 	}
@@ -79,9 +87,12 @@ function App() {
 					),
 				],
 			};
+			saveDataInLocalStorage(updatedProjects);
 			return updatedProjects;
 		});
 	}
+
+	// getDataFromLocalStorage();
 
 	return (
 		<main className="flex flex-row justify-stretch h-dvh pt-10">
