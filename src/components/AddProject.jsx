@@ -19,12 +19,16 @@ export default function AddProject({ onSave, onClose }) {
 			date.current.value.trim() === ''
 		) {
 			modal.current.open();
+		} else {
+			onSave(
+				title.current.value,
+				description.current.value,
+				date.current.value
+			);
+			title.current.value = '';
+			description.current.value = '';
+			date.current.value = '';
 		}
-
-		onSave(title.current.value, description.current.value, date.current.value);
-		title.current.value = '';
-		description.current.value = '';
-		date.current.value = '';
 	}
 
 	function handleClose() {
