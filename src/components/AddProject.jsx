@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import Modal from './Modal.jsx';
 
 export default function AddProject({ onSave, onClose }) {
 	const labelClassName = 'uppercase font-bold text-lg  text-stone-500 mt-6';
@@ -9,7 +10,17 @@ export default function AddProject({ onSave, onClose }) {
 	const description = useRef();
 	const date = useRef();
 
+	const modal = useRef();
+
 	function handleSave() {
+		if (
+			title.current.value.trim() === '' ||
+			description.current.value.trim() === '' ||
+			date.current.value.trim() === ''
+		) {
+			modal.current.open();
+		}
+
 		onSave(title.current.value, description.current.value, date.current.value);
 		title.current.value = '';
 		description.current.value = '';
@@ -25,6 +36,10 @@ export default function AddProject({ onSave, onClose }) {
 
 	return (
 		<div className="">
+			<Modal ref={modal}>
+				<h2>Invalid input</h2>
+				<p>Please enter valid value for every field</p>
+			</Modal>
 			<div className="flex flex-row justify-end gap-x-4 gap-y-2">
 				<button onClick={handleClose} className="">
 					Cancel
