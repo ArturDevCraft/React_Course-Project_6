@@ -17,7 +17,7 @@ export default function EditProject({
 			<div className="flex justify-between">
 				<h2 className="text-4xl font-bold text-stone-700">{title}</h2>
 				<button
-					className="text-xl text-stone-700 hover:text-stone-500"
+					 
 					onClick={handleDeleteProject}
 				>
 					Delete
