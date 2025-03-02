@@ -1,9 +1,8 @@
 # Project Managment app
 
-Project is my own work done as task during "React - The Complete Guide 2025 (incl. Next.js, Redux)". It is simple application to manage projects.
+This project is my own work done as a task during "React - The Complete Guide 2025 (incl. Next.js, Redux)". It is an easy application to manage projects.
 
-You can add and delete projects and tasks for each one.
-I decided to add storing data in browser local storage to keep informations after reloading page.
+You can add and delete projects and tasks for each of them. I decided to add saving data in browser's local storage to keep information after page reload.
 
 Used technologies: **React, Javascript, Tailwind**.
 
